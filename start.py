@@ -1,18 +1,45 @@
 import wx
 
 class windowClass(wx.Frame):
-    def __init__(self, parent, title):
-        super(windowClass, self).__init__(parent, title=title, size=(400, 400))
+    def __init__(self, *args, **kwargs):
+        super(windowClass, self).__init__(*args, **kwargs)
 
-        # Setting the window to open in a different location
-        # self.Move((800,350))
-        self.Centre()
+        self.basicGUI()
 
 
-        self.Show()
+    def basicGUI(self):
+        # Create the menu bar
+        menuBar = wx.MenuBar()
+        fileButton = wx.Menu()
+        exitItem = fileButton.Append(wx.ID_EXIT, 'Exit Program', 'status message')
 
-app = wx.App()
-windowClass(None, title='epic window')
-app.MainLoop()
+        menuBar.Append(fileButton, 'File')
+
+        self.SetMenuBar(menuBar)
+
+        self.Bind(wx.EVT_MENU, self.Quit, exitItem)
+
+        self.SetTitle('Epic Window')
+        self.Show(True)
+
+    def Quit(self, e):
+        self.Close()
+
+
+def main():
+    app = wx.App()
+    windowClass(None)
+
+    app.MainLoop()
+
+
+
+main()
+
+
+
+
+
+
 
 
