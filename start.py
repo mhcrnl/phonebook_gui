@@ -11,18 +11,18 @@ class windowClass(wx.Frame):
         # Create the menu bar
         menuBar = wx.MenuBar()
         fileButton = wx.Menu()
-        exitItem = fileButton.Append(wx.ID_EXIT, 'Exit Program', 'status message')
+        exitItem = fileButton.Append(wx.ID_CLOSE, 'Exit Program', 'status message')
 
         menuBar.Append(fileButton, 'File')
 
         self.SetMenuBar(menuBar)
 
-        self.Bind(wx.EVT_MENU, self.Quit, exitItem)
+        self.Bind(wx.EVT_MENU, self.quitProgram, exitItem)
 
         self.SetTitle('Epic Window')
         self.Show(True)
 
-    def Quit(self, e):
+    def quitProgram(self, e):
         self.Close()
 
 
