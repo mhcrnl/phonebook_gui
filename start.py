@@ -11,6 +11,10 @@ class windowClass(wx.Frame):
         # Creating the Panel to hold the stuff
         panel = wx.Panel(self)
 
+        # Adding Items to the Panel
+        # Creating a textbox
+        wx.TextCtrl(panel, pos=(10, 10), size=(250, 150))
+
         # Create the menu bar
         menuBar = wx.MenuBar()
 
