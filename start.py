@@ -11,10 +11,6 @@ class windowClass(wx.Frame):
         # Creating the Panel to hold the stuff
         panel = wx.Panel(self)
 
-        # ADDING ITEMS TO PANEL
-        # Creating a textbox
-        wx.TextCtrl(panel, pos=(10, 10), size=(250, 150))
-
 
         # DIALOG BOXES
         # Asking for user's name
@@ -27,6 +23,24 @@ class windowClass(wx.Frame):
         yesNoBox = wx.MessageDialog(None, 'Do you enjoy python?', 'Question', wx.YES_NO)
         yesNoAnswer = yesNoBox.ShowModal()
         yesNoBox.Destroy()
+
+
+        # Options box / multiple choice input (with only one allowed)
+        chooseOneBox = wx.SingleChoiceDialog(None, 'What is your favorite color?', 'Color Question', \
+                                             ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Black'])
+        if chooseOneBox.ShowModal() == wx.ID_OK:
+            favColor = chooseOneBox.GetStringSelection()
+
+        # ADDING ITEMS TO PANEL
+        # Creating a textbox
+        wx.TextCtrl(panel, pos=(3, 100), size=(150, 50))
+        # static text
+        basicText = wx.StaticText(panel, -1, 'Awesome Text', pos=(3, 3))
+        basicText.SetForegroundColour(favColor)
+        basicText.SetBackgroundColour('#ffffff')
+
+
+
 
 
         # CREATION OF MENU BAR AND ITEMS
@@ -57,11 +71,6 @@ class windowClass(wx.Frame):
         if yesNoAnswer == wx.ID_NO:
             userName = 'Python Hater'
 
-        # Options box / multiple choice input (with only one allowed)
-        chooseOneBox = wx.SingleChoiceDialog(None, 'What is your favorite color?', 'Color Question', \
-                                             ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Black'])
-        if chooseOneBox.ShowModal() == wx.ID_OK:
-            favColor = chooseOneBox.GetStringSelection()
 
         # Setting the title of the window
         self.SetTitle('Welcome ' + userName)
