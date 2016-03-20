@@ -40,9 +40,6 @@ class windowClass(wx.Frame):
         basicText.SetBackgroundColour('#ffffff')
 
 
-
-
-
         # CREATION OF MENU BAR AND ITEMS
         # Create the menu bar
         menuBar = wx.MenuBar()
