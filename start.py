@@ -18,7 +18,7 @@ class windowClass(wx.Frame):
 
         # DIALOG BOXES
         # Asking for user's name
-        nameBox = wx.TextEntryDialog(None, 'What is your name?', 'Welcome!', 'name')
+        nameBox = wx.TextEntryDialog(None, 'What is your name?', 'Welcome!', 'Michelle')
         if nameBox.ShowModal() == wx.ID_OK:
             userName = nameBox.GetValue()
 
@@ -56,6 +56,12 @@ class windowClass(wx.Frame):
         # Doing a thing with the yes/no ? answer
         if yesNoAnswer == wx.ID_NO:
             userName = 'Python Hater'
+
+        # Options box / multiple choice input (with only one allowed)
+        chooseOneBox = wx.SingleChoiceDialog(None, 'What is your favorite color?', 'Color Question', \
+                                             ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Black'])
+        if chooseOneBox.ShowModal() == wx.ID_OK:
+            favColor = chooseOneBox.GetStringSelection()
 
         # Setting the title of the window
         self.SetTitle('Welcome ' + userName)
