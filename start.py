@@ -11,10 +11,25 @@ class windowClass(wx.Frame):
         # Creating the Panel to hold the stuff
         panel = wx.Panel(self)
 
-        # Adding Items to the Panel
+        # ADDING ITEMS TO PANEL
         # Creating a textbox
         wx.TextCtrl(panel, pos=(10, 10), size=(250, 150))
 
+
+        # DIALOG BOXES
+        # Asking for user's name
+        nameBox = wx.TextEntryDialog(None, 'What is your name?', 'Welcome!', 'name')
+        if nameBox.ShowModal() == wx.ID_OK:
+            userName = nameBox.GetValue()
+
+
+        # Creating yes/no dialog box
+        yesNoBox = wx.MessageDialog(None, 'Do you enjoy python?', 'Question', wx.YES_NO)
+        yesNoAnswer = yesNoBox.ShowModal()
+        yesNoBox.Destroy()
+
+
+        # CREATION OF MENU BAR AND ITEMS
         # Create the menu bar
         menuBar = wx.MenuBar()
 
@@ -38,8 +53,12 @@ class windowClass(wx.Frame):
         # Binding the quitProgram function to the exit button
         self.Bind(wx.EVT_MENU, self.quitProgram, exitItem)
 
+        # Doing a thing with the yes/no ? answer
+        if yesNoAnswer == wx.ID_NO:
+            userName = 'Python Hater'
+
         # Setting the title of the window
-        self.SetTitle('Epic Window')
+        self.SetTitle('Welcome ' + userName)
 
         # Making the window actually show up
         self.Show(True)
