@@ -1,8 +1,8 @@
-import wx
+import wx, phonebook_database
 
 class Frame(wx.Frame):
     def __init__(self, title):
-        wx.Frame.__init__(self, None, title=title, size=(800,600))
+        wx.Frame.__init__(self, None, title=title, size=(700,600))
         panel = wx.Panel(self)
 
         # ******************************************************************
@@ -29,7 +29,7 @@ class Frame(wx.Frame):
         # ******************************************************************
 
         # Setting up UI for adding a new contact area
-        wx.StaticBox(panel, label="Add a new contact", pos=(20,40), size=(300,200))
+        wx.StaticBox(panel, label="Contact Information", pos=(20,40), size=(300,250))
 
         # creating add new contact labels and text boxes
         wx.StaticText(panel, label="First Name:", pos=(40,70))
@@ -49,11 +49,18 @@ class Frame(wx.Frame):
         self.listCtrl.InsertColumn(1, "First Name")
         self.listCtrl.InsertColumn(2, "Last Name")
 
-
+        self.fillListCtrl()
 
         # ******************************************************************
         # ******************* Buttons Creation *****************************
         # ******************************************************************
+
+        # Creating Buttons
+        remove = wx.Button(panel, label="Remove Contact", pos=(180, 240))
+        save = wx.Button(panel, label="Save Contact", pos=(30,240))
+
+        # Binding actions to the buttons
+
 
 
     def exitProgram(self, event):
@@ -68,7 +75,15 @@ class Frame(wx.Frame):
             # Terminate Program
             self.Destroy()
 
+    def fillListCtrl(self):
+        allData = phonebook_database.viewAll()
 
+        # Delete old data before adding new data
+        self.listCtrl.DeleteAllItems()
+
+        for row in allData:
+            # Loop through and append data
+            self.listCtrl.Append(row)
 
 
 

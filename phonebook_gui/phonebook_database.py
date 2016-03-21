@@ -4,7 +4,7 @@ import sqlite3
 conn = sqlite3.connect('phonebook.db')
 
 def createTable():
-    # Create a table named CHARACTER_INFO
+    # Create a table named PHONE_BOOK
     conn.execute("CREATE TABLE if not EXISTS PHONE_BOOK ( \
                  ID INTEGER PRIMARY KEY AUTOINCREMENT, \
                  FIRST_NAME TEXT, \
@@ -67,4 +67,4 @@ def deleteContact(change_id):
     return conn.total_changes
 
 
-
+createTable()
