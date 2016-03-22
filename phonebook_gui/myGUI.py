@@ -55,6 +55,13 @@ class Frame(wx.Frame):
         # ******************* Buttons Creation *****************************
         # ******************************************************************
 
+        # Save Button
+        saveBtn = wx.Button(panel, label="Add Contact", pos=(180,250))
+        # Delete Button
+        deleteBtn = wx.Button(panel, label="Delete Contact", pos=(50, 250))
+
+
+
 
     def exitProgram(self, event):
         # Creating yes/no dialog box
