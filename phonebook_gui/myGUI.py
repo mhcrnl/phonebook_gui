@@ -64,6 +64,11 @@ class Frame(wx.Frame):
 
         # Binding Events to Buttons
         saveBtn.Bind(wx.EVT_BUTTON, self.addContact)
+        # Bind delete button to onDelete function
+        deleteBtn.Bind(wx.EVT_BUTTON, self.onDelete)
+
+        # run onSelect function when item is selected
+        self.listCtrl.Bind(wx.EVT_LIST_ITEM_SELECTED, self.onSelect)
 
 
     def fillListCtrl(self):
@@ -111,7 +116,17 @@ class Frame(wx.Frame):
             # Terminate Program
             self.Destroy()
 
+    def onSelect(self, event):
+        # get the ID of the selected row
+        self.selectedId = event.GetText()
 
+
+    def onDelete(self, event):
+        # Delete the character
+        phonebook_database.deleteContact(self.selectedId)
+
+        # refresh table after deleting a character
+        self.fillListCtrl()
 
 
 

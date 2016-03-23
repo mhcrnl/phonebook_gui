@@ -29,7 +29,7 @@ def newContact(fName,lName,phone,email):
     sql_str = "INSERT INTO PHONE_BOOK \
         (FIRST_NAME, LAST_NAME, PHONE_NUMBER, EMAIL) \
         VALUES ({});".format(val_str)
-    print sql_str
+
 
     conn.execute(sql_str)
     conn.commit()
@@ -43,6 +43,8 @@ def viewAll():
     # Get data from cursor in array
     rows = cursor.fetchall()
     return rows
+
+
 
 def updateContact(change_id,fName,lName,phone,email):
     # Create values part of sql command
