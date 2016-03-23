@@ -1,4 +1,4 @@
-import wx
+import wx, phonebook_database
 
 class Frame(wx.Frame):
     def __init__(self, title):
@@ -72,6 +72,8 @@ class Frame(wx.Frame):
         email = self.cEmail.GetValue()
         print(fName, lName, phone, email)
 
+        # Passing the information over to be added to the database
+        phonebook_database.newContact(fName, lName, phone, email)
 
     def exitProgram(self, event):
         # Creating yes/no dialog box

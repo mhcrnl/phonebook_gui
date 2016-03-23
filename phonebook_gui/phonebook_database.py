@@ -27,7 +27,7 @@ def newContact(fName,lName,phone,email):
         fName, lName, phone, email)
 
     sql_str = "INSERT INTO PHONE_BOOK \
-        (FIRS_NAME, LAST_NAME, PHONE_NUMBER, EMAIL \
+        (FIRST_NAME, LAST_NAME, PHONE_NUMBER, EMAIL) \
         VALUES ({});".format(val_str)
     print sql_str
 
