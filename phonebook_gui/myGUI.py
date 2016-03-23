@@ -42,13 +42,16 @@ class Frame(wx.Frame):
         self.cEmail = wx.TextCtrl(panel, size=(150, -1), pos=(150, 190))
 
         # Setting up the table to display information
-        self.listCtrl = wx.ListCtrl(panel, size=(300, 400), pos=(350, 40), \
+        self.listCtrl = wx.ListCtrl(panel, size=(400, 400), pos=(350, 40), \
                                      style=wx.LC_REPORT | wx.BORDER_SUNKEN)
         # Adding columns to the table
         self.listCtrl.InsertColumn(0, "ID")
         self.listCtrl.InsertColumn(1, "First Name")
         self.listCtrl.InsertColumn(2, "Last Name")
+        self.listCtrl.InsertColumn(3, "Phone")
+        self.listCtrl.InsertColumn(4, 'Email')
 
+        self.fillListCtrl()
 
 
         # ******************************************************************
@@ -62,6 +65,15 @@ class Frame(wx.Frame):
         # Binding Events to Buttons
         saveBtn.Bind(wx.EVT_BUTTON, self.addContact)
 
+
+    def fillListCtrl(self):
+        allData = phonebook_database.viewAll()
+
+        # Delete old data before displaying new
+        self.listCtrl.DeleteAllItems()
+
+        for row in allData:
+            self.listCtrl.Append(row)
 
 
     def addContact(self, event):
@@ -81,6 +93,11 @@ class Frame(wx.Frame):
 
         # Passing the information over to be added to the database
         phonebook_database.newContact(fName, lName, phone, email)
+
+        self.cFName.Clear()
+        self.cLName.Clear()
+        self.cPhone.Clear()
+        self.cEmail.Clear()
 
     def exitProgram(self, event):
         # Creating yes/no dialog box
