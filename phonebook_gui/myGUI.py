@@ -70,7 +70,14 @@ class Frame(wx.Frame):
         lName = self.cLName.GetValue()
         phone = self.cPhone.GetValue()
         email = self.cEmail.GetValue()
-        print(fName, lName, phone, email)
+
+        # Verifying that all values have been entered
+        if (fName == '') or (lName == '') or (phone == '') or (email == ''):
+            blankDialog = wx.MessageDialog(None, 'Some details are missing. You must enter values in each box.', \
+                                           'Missing Details', wx.OK)
+            blankDialog.ShowModal()
+            blankDialog.Destroy()
+            return False
 
         # Passing the information over to be added to the database
         phonebook_database.newContact(fName, lName, phone, email)
