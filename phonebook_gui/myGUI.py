@@ -55,12 +55,17 @@ class Frame(wx.Frame):
         # ******************* Buttons Creation *****************************
         # ******************************************************************
 
-        # Save Button
+        # Creating Buttons
         saveBtn = wx.Button(panel, label="Add Contact", pos=(180,250))
-        # Delete Button
         deleteBtn = wx.Button(panel, label="Delete Contact", pos=(50, 250))
 
+        # Binding Events to Buttons
+        saveBtn.Bind(wx.EVT_BUTTON, self.addContact)
 
+
+
+    def addContact(self, event):
+        pass
 
 
     def exitProgram(self, event):
