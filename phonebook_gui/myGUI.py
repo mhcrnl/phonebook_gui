@@ -65,7 +65,12 @@ class Frame(wx.Frame):
 
 
     def addContact(self, event):
-        pass
+        # Get the information entered by user:
+        fName = self.cFName.GetValue()
+        lName = self.cLName.GetValue()
+        phone = self.cPhone.GetValue()
+        email = self.cEmail.GetValue()
+        print(fName, lName, phone, email)
 
 
     def exitProgram(self, event):
